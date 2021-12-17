@@ -15,6 +15,9 @@
 		F1E4C664276C0718001A8ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4C662276C0718001A8ECC /* LaunchScreen.storyboard */; };
 		F1E4C66F276C0719001A8ECC /* IGAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4C66E276C0719001A8ECC /* IGAppTests.swift */; };
 		F1E4C67A276C0719001A8ECC /* IGAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4C679276C0719001A8ECC /* IGAppUITests.swift */; };
+		F1E4C68B276C07FF001A8ECC /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4C68A276C07FF001A8ECC /* NewsModel.swift */; };
+		F1E4C690276C0B6B001A8ECC /* NetwrokInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4C68F276C0B6B001A8ECC /* NetwrokInterface.swift */; };
+		F1E4C695276C0D07001A8ECC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4C694276C0D07001A8ECC /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		F1E4C675276C0719001A8ECC /* IGAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IGAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E4C679276C0719001A8ECC /* IGAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGAppUITests.swift; sourceTree = "<group>"; };
 		F1E4C67B276C0719001A8ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1E4C68A276C07FF001A8ECC /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		F1E4C68F276C0B6B001A8ECC /* NetwrokInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwrokInterface.swift; sourceTree = "<group>"; };
+		F1E4C694276C0D07001A8ECC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +106,15 @@
 			isa = PBXGroup;
 			children = (
 				F1E4C657276C070B001A8ECC /* AppDelegate.swift */,
+				F1E4C68A276C07FF001A8ECC /* NewsModel.swift */,
 				F1E4C659276C070B001A8ECC /* SceneDelegate.swift */,
 				F1E4C65B276C070B001A8ECC /* ViewController.swift */,
 				F1E4C65D276C070B001A8ECC /* Main.storyboard */,
 				F1E4C660276C0718001A8ECC /* Assets.xcassets */,
 				F1E4C662276C0718001A8ECC /* LaunchScreen.storyboard */,
 				F1E4C665276C0718001A8ECC /* Info.plist */,
+				F1E4C68F276C0B6B001A8ECC /* NetwrokInterface.swift */,
+				F1E4C694276C0D07001A8ECC /* ViewModel.swift */,
 			);
 			path = IGApp;
 			sourceTree = "<group>";
@@ -258,8 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E4C68B276C07FF001A8ECC /* NewsModel.swift in Sources */,
 				F1E4C65C276C070B001A8ECC /* ViewController.swift in Sources */,
 				F1E4C658276C070B001A8ECC /* AppDelegate.swift in Sources */,
+				F1E4C690276C0B6B001A8ECC /* NetwrokInterface.swift in Sources */,
+				F1E4C695276C0D07001A8ECC /* ViewModel.swift in Sources */,
 				F1E4C65A276C070B001A8ECC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
