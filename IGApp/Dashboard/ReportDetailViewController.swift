@@ -8,8 +8,8 @@
 import UIKit
 
 class ReportDetailViewController: UIViewController {
-    let report: Report
-    let viewModel = ViewModel()
+    private let report: Report
+    private let viewModel = DashboardViewModel()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -40,7 +40,7 @@ class ReportDetailViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 80).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 80).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 100).isActive = true
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .lightGray
         imageView.backgroundColor?.withAlphaComponent(0.5)
@@ -91,8 +91,8 @@ class ReportDetailViewController: UIViewController {
     
     private lazy var viewOnWebButton: UIButton = {
         let button = UIButton()
-        button.setTitleColor(.tertiarySystemGroupedBackground, for: .normal)
-        button.backgroundColor = .lightGray
+        button.setTitleColor(.label, for: .normal)
+        button.backgroundColor = .tertiarySystemBackground
         button.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         button.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
         button.layer.cornerRadius = 8

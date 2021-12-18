@@ -1,5 +1,5 @@
 //
-//  NewsTableViewController.swift
+//  DashboardTableViewController.swift
 //  IGApp
 //
 //  Created by Courtney Langmeyer on 12/16/21.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class NewsTableViewController: UITableViewController {
+class DashboardTableViewController: UITableViewController {
     
-    let viewModel = ViewModel()
+    let viewModel = DashboardViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

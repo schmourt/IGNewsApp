@@ -1,5 +1,5 @@
 //
-//  NewsModel.swift
+//  ReportModel.swift
 //  IGApp
 //
 //  Created by Courtney Langmeyer on 12/16/21.

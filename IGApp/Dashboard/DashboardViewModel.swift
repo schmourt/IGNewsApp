@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewModel {
+class DashboardViewModel {
     let networkInterface = NetworkInterface()
     
     let formatter: DateFormatter = {

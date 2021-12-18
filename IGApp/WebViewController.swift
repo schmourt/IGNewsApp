@@ -7,8 +7,7 @@
 
 import WebKit
 
-open class WebViewController: UIViewController {
-
+class WebViewController: UIViewController {
     lazy var webView: WKWebView = {
         let config = WKWebViewConfiguration()
         let webView = WKWebView(frame: .zero, configuration: config)
@@ -49,8 +48,6 @@ open class WebViewController: UIViewController {
             return
         }
         self.webView.load(URLRequest(url: url))
-        
-        
     }
 }
 

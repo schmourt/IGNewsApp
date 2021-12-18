@@ -34,4 +34,19 @@ class NetworkInterface {
             
         }.resume()
     }
+    
+    func getMarketData(completion: @escaping (MarketModel)->()) {
+        guard let url = URL(string: "https://content.dailyfx.com/api/v1/markets") else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data, let marketData = try? JSONDecoder().decode(MarketModel.self, from: data) else {
+                fatalError("Error decoding data")
+            }
+    
+            completion(marketData)
+            
+        }.resume()
+    }
 }

@@ -18,19 +18,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
         
-        let dashboardTabBarController = TabBarController()
+        let tabBarController = TabBarController()
         
-        let newsTableViewController = NewsTableViewController()
-        newsTableViewController.tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(), selectedImage: UIImage())
+        let dashboardTableViewController = DashboardTableViewController()
+        dashboardTableViewController.tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(), selectedImage: UIImage())
         
-        let marketsViewController = MarketsViewController()
-        marketsViewController.tabBarItem = UITabBarItem(title: "Markets", image: UIImage(), selectedImage: UIImage())
+        let marketsTableViewController = MarketsTableViewController()
+        marketsTableViewController.tabBarItem = UITabBarItem(title: "Markets", image: UIImage(), selectedImage: UIImage())
         
-        let navigationViewController = UINavigationController(rootViewController: newsTableViewController)
+        let dashboardNavigationViewController = UINavigationController(rootViewController: dashboardTableViewController)
         
-        dashboardTabBarController.setViewControllers([navigationViewController, marketsViewController], animated: false)
+        let marketsNavigationViewController = UINavigationController(rootViewController: marketsTableViewController)
         
-        window?.rootViewController = dashboardTabBarController
+        tabBarController.setViewControllers([dashboardNavigationViewController, marketsNavigationViewController], animated: false)
+        
+        window?.rootViewController = tabBarController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
