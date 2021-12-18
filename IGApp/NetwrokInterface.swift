@@ -20,17 +20,17 @@ class NetworkInterface {
         }.resume()
     }
 
-    func getNewsList(completion: @escaping (NewsModel)->()) {
+    func getNewsList(completion: @escaping (ReportModel)->()) {
         guard let url = URL(string: "https://content.dailyfx.com/api/v1/dashboard") else {
             return
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data, let articles = try? JSONDecoder().decode(NewsModel.self, from: data) else {
+            guard let data = data, let reports = try? JSONDecoder().decode(ReportModel.self, from: data) else {
                 fatalError("Error decoding data")
             }
     
-            completion(articles)
+            completion(reports)
             
         }.resume()
     }
