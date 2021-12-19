@@ -161,12 +161,14 @@ class ReportDetailViewController: UIViewController {
         
         setUpViews()
         
+        /// Populate the report image
         viewModel.getImageForURL(urlString: report.reportImageURL) { [weak self] image in
             DispatchQueue.main.async {
                 self?.articleImage.image = image
             }
         }
         
+        /// Populate fhe author image
         viewModel.getImageForURL(urlString: report.authorImageURL) { [weak self] image in
             DispatchQueue.main.async {
                 self?.authorImage.image = image

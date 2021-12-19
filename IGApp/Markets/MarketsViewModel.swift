@@ -12,6 +12,8 @@ class MarketsViewModel {
     
     var marketDictionary = [CommodityType : [Commodity]]()
     
+    /// Get the market data from the API layer and populate the dictionary for the tableview
+    /// - Parameter completion: alerts tableview that dictionary has loaded
     func getMarketData(completion: @escaping ()->()) {
         
         var dictionary = [CommodityType : [Commodity]]()

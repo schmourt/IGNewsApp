@@ -10,6 +10,10 @@ import UIKit
 
 class NetworkInterface {
     
+    /// Load an image from a web url
+    /// - Parameters:
+    ///   - url: url hosting the image
+    ///   - completion: the image from the url
     func getImage(url: URL, completion: @escaping (UIImage)->()) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
@@ -19,8 +23,10 @@ class NetworkInterface {
             completion(image)
         }.resume()
     }
-
-    func getNewsList(completion: @escaping (ReportModel)->()) {
+    
+    /// Load reports for the dashboard
+    /// - Parameter completion: network report codable type
+    func getReports(completion: @escaping (ReportModel)->()) {
         guard let url = URL(string: "https://content.dailyfx.com/api/v1/dashboard") else {
             return
         }
@@ -35,6 +41,8 @@ class NetworkInterface {
         }.resume()
     }
     
+    /// Loads the market data
+    /// - Parameter completion: market model codable  type
     func getMarketData(completion: @escaping (MarketModel)->()) {
         guard let url = URL(string: "https://content.dailyfx.com/api/v1/markets") else {
             return

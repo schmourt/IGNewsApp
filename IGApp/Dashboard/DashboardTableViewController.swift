@@ -19,7 +19,7 @@ class DashboardTableViewController: UITableViewController {
     
         tableView.tableFooterView = UIView()
         
-        viewModel.getNewsList { [weak self] in
+        viewModel.getReports { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }

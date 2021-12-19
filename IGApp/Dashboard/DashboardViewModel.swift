@@ -19,6 +19,10 @@ class DashboardViewModel {
     
     var reportDictionary = [ReportType : [Report]]()
     
+    /// Get an image from network layer to use in UI
+    /// - Parameters:
+    ///   - urlString: url used for image
+    ///   - completion: pass the image
     func getImageForURL(urlString: String, completion: @escaping (UIImage)->()) {
         guard let url = URL(string: urlString) else {
             return
@@ -28,17 +32,18 @@ class DashboardViewModel {
             completion(image)
         }
     }
-
-    func getNewsList(completion: @escaping ()->()) {
-        
-        networkInterface.getNewsList { [weak self] news in
+    
+    /// Get the reports  from the API layer and populate the dictionary for the tableview
+    /// - Parameter completion: notifies the tableview that the dictionary has loaded
+    func getReports(completion: @escaping ()->()) {
+        networkInterface.getReports { [weak self] reports in
             
             var dictionary = [ReportType : [Report]]()
             
-            guard let technicalAnalysis = news.technicalAnalysis,
-                  let topNews = news.topNews,
-                  let specialReports = news.specialReport,
-                  let dailyBriefings = news.dailyBriefings,
+            guard let technicalAnalysis = reports.technicalAnalysis,
+                  let topNews = reports.topNews,
+                  let specialReports = reports.specialReport,
+                  let dailyBriefings = reports.dailyBriefings,
                   let europeanReports = dailyBriefings.eu,
                   let asianReports = dailyBriefings.asia,
                   let americanReports = dailyBriefings.us else {
@@ -57,6 +62,9 @@ class DashboardViewModel {
         }
     }
     
+    /// Converts int into timestamp
+    /// - Parameter dateInt: 13-digit integer value such as 1639874482891
+    /// - Returns: String format such as "10:00 AM, 23 February 2022"
     private func convertDate(dateInt: Int) -> String {
         let truncatedTime = Int(dateInt / 1000)
         let date = Date(timeIntervalSince1970: TimeInterval(truncatedTime))
@@ -64,6 +72,9 @@ class DashboardViewModel {
         return formatter.string(from: date)
     }
     
+    /// Converts the network struct report type into a report type used for UI
+    /// - Parameter reports: network report to be converted
+    /// - Returns: array of reports ready for UI
     private func makeNewsReport(reports: [NetworkReport]) -> [Report] {
         var newsReports = [Report]()
         

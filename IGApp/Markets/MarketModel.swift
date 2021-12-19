@@ -22,6 +22,7 @@ struct Commodity: Codable {
     }
 }
 
+// MARK: - CommodityType
 enum CommodityType: Int, Hashable {
     case currencies, commodities, indices
     
