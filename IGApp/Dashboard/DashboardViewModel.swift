@@ -68,16 +68,15 @@ class DashboardViewModel {
         var newsReports = [Report]()
         
         for report in reports {
-            guard let title = report.title,
-                  let authors = report.authors,
-                  let description = report.specialReportDescription,
-                  let authorImageURL = authors[0].photo,
-                  let timestamp = report.displayTimestamp,
-                  let updatedTimestamp = report.lastUpdatedTimestamp,
-                  let imageURL = report.headlineImageURL,
-                  let url = report.url else {
-                return [Report(title: "", description: "", authors: "", authorImageURL: "", timestamp: "", updatedTimestamp: "", reportImageURL: "", url: "")]
-            }
+            let title = report.title ?? "Title Unavailable"
+            let authors = report.authors ?? [Authors(name: "N/A", title: "N/A", photo: "N/A")]
+            let description = report.specialReportDescription ?? "Description Unavailable"
+            let authorImageURL = authors[0].photo ?? "N/A"
+            let timestamp = report.displayTimestamp ?? 0
+            let updatedTimestamp = report.lastUpdatedTimestamp ?? 0
+            let imageURL = report.headlineImageURL ?? "N/A"
+            let url = report.url ?? "N/A"
+                
             
             let authorNames = authors.map {$0.name ?? ""}.joined(separator: ", ")
             

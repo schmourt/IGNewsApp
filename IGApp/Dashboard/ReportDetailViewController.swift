@@ -42,7 +42,7 @@ class ReportDetailViewController: UIViewController {
         imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 80).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 100).isActive = true
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .tertiarySystemBackground
         imageView.backgroundColor?.withAlphaComponent(0.5)
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 8
@@ -81,7 +81,7 @@ class ReportDetailViewController: UIViewController {
         imageView.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .tertiarySystemBackground
         imageView.backgroundColor?.withAlphaComponent(0.5)
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 8
@@ -92,11 +92,12 @@ class ReportDetailViewController: UIViewController {
     private lazy var viewOnWebButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.label, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        button.setTitle("Tap to view on web", for: .normal)
         button.backgroundColor = .tertiarySystemBackground
         button.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         button.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
         button.layer.cornerRadius = 8
-        button.setTitle("Tap to view on web", for: .normal)
         button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
         
         return button

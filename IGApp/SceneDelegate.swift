@@ -21,10 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = TabBarController()
         
         let dashboardTableViewController = DashboardTableViewController()
-        dashboardTableViewController.tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(), selectedImage: UIImage())
+        dashboardTableViewController.tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
         
         let marketsTableViewController = MarketsTableViewController()
-        marketsTableViewController.tabBarItem = UITabBarItem(title: "Markets", image: UIImage(), selectedImage: UIImage())
+        marketsTableViewController.tabBarItem = UITabBarItem(title: "Markets", image: UIImage(systemName: "chart.bar"), selectedImage: UIImage(systemName: "chart.bar.fill"))
         
         let dashboardNavigationViewController = UINavigationController(rootViewController: dashboardTableViewController)
         
