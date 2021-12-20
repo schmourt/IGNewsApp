@@ -21,6 +21,8 @@ class MarketsViewModel {
         }
     }
     
+    /// Format the data into types used for UI
+    /// - Parameter data: data passed through from network
     func formatMarketData(data: MarketModel) {
         var dictionary = [CommodityType : [Commodity]]()
         

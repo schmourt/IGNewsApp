@@ -36,7 +36,6 @@ class DashboardTableViewController: UITableViewController {
         let report = reports[indexPath.row]
         
         self.navigationController?.pushViewController(ReportDetailViewController(report: report), animated: false)
-        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -87,8 +86,7 @@ class DashboardTableViewController: UITableViewController {
         
         cell.textLabel?.text = reports[indexPath.row].title
         cell.detailTextLabel?.text = "\n\(article.description)\n\n\(article.authors)\n\(article.timestamp)"
-        print("Text here", cell.detailTextLabel?.text)
-        print("index path", indexPath)
+
         return cell
     }
 }

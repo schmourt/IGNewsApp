@@ -93,7 +93,6 @@ class DashboardViewModel {
             let imageURL = report.headlineImageURL ?? "N/A"
             let url = report.url ?? "N/A"
                 
-            
             let authorNames = authors.map {$0.name ?? ""}.joined(separator: ", ")
             
             newsReports.append(Report(title: title, description: description, authors: authorNames, authorImageURL: authorImageURL, timestamp: convertDate(dateInt: timestamp), updatedTimestamp: convertDate(dateInt: updatedTimestamp), reportImageURL: imageURL, url: url))
