@@ -182,7 +182,6 @@ class ReportDetailViewController: UIViewController {
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     
-        
         reportStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         reportStackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         reportStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
