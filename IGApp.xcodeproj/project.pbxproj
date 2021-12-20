@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F13A6F7D276EC2B1000EDA02 /* dashboard.json in Resources */ = {isa = PBXBuildFile; fileRef = F13A6F7C276EC2B0000EDA02 /* dashboard.json */; };
+		F13A6F85276EC2B7000EDA02 /* markets.json in Resources */ = {isa = PBXBuildFile; fileRef = F13A6F84276EC2B6000EDA02 /* markets.json */; };
 		F16EDA5F276D434F0033F868 /* ReportDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16EDA5E276D434F0033F868 /* ReportDetailViewController.swift */; };
 		F16EDA6A276D71FD0033F868 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16EDA69276D71FD0033F868 /* WebViewController.swift */; };
 		F16EDA6F276E941C0033F868 /* MarketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16EDA6E276E941C0033F868 /* MarketsViewModel.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F13A6F7C276EC2B0000EDA02 /* dashboard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dashboard.json; sourceTree = "<group>"; };
+		F13A6F84276EC2B6000EDA02 /* markets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = markets.json; sourceTree = "<group>"; };
 		F16EDA5E276D434F0033F868 /* ReportDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailViewController.swift; sourceTree = "<group>"; };
 		F16EDA69276D71FD0033F868 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F16EDA6E276E941C0033F868 /* MarketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewModel.swift; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 		F1E4C66D276C0719001A8ECC /* IGAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				F13A6F7C276EC2B0000EDA02 /* dashboard.json */,
+				F13A6F84276EC2B6000EDA02 /* markets.json */,
 				F1E4C66E276C0719001A8ECC /* IGAppTests.swift */,
 				F1E4C670276C0719001A8ECC /* Info.plist */,
 			);
@@ -284,6 +290,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13A6F7D276EC2B1000EDA02 /* dashboard.json in Resources */,
+				F13A6F85276EC2B7000EDA02 /* markets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

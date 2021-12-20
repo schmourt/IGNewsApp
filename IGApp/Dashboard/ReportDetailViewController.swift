@@ -11,7 +11,7 @@ class ReportDetailViewController: UIViewController {
     private let report: Report
     private let viewModel = DashboardViewModel()
     
-    private lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
@@ -24,7 +24,7 @@ class ReportDetailViewController: UIViewController {
         return label
     }()
     
-    private lazy var timestampLabel: UILabel = {
+    lazy var timestampLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
@@ -36,7 +36,7 @@ class ReportDetailViewController: UIViewController {
         return label
     }()
     
-    private lazy var articleImage: UIImageView = {
+    lazy var articleImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 80).isActive = true
@@ -50,7 +50,7 @@ class ReportDetailViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var descriptionLabel: UILabel = {
+    lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -63,7 +63,7 @@ class ReportDetailViewController: UIViewController {
         return label
     }()
     
-    private lazy var authorLabel: UILabel = {
+    lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
@@ -75,7 +75,7 @@ class ReportDetailViewController: UIViewController {
         return label
     }()
     
-    private lazy var authorImage: UIImageView = {
+    lazy var authorImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
@@ -89,7 +89,7 @@ class ReportDetailViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var viewOnWebButton: UIButton = {
+    lazy var viewOnWebButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.label, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
@@ -103,7 +103,7 @@ class ReportDetailViewController: UIViewController {
         return button
     }()
     
-    private lazy var spacerView: UIView = {
+    lazy var spacerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
@@ -111,7 +111,7 @@ class ReportDetailViewController: UIViewController {
         return view
     }()
     
-    private lazy var authorStackView: UIStackView = {
+    lazy var authorStackView: UIStackView = {
         let stackView = UIStackView()
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -123,7 +123,7 @@ class ReportDetailViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var scrollView: UIScrollView = {
+    lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
         scrollView.addSubview(reportStackView)
@@ -132,7 +132,7 @@ class ReportDetailViewController: UIViewController {
         return scrollView
     }()
     
-    private lazy var reportStackView: UIStackView = {
+    lazy var reportStackView: UIStackView = {
         let stackView = UIStackView()
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -143,8 +143,6 @@ class ReportDetailViewController: UIViewController {
         
         return stackView
     }()
-    
-    
 
     init(report: Report) {
         self.report = report

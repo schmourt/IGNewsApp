@@ -37,29 +37,34 @@ class DashboardViewModel {
     /// - Parameter completion: notifies the tableview that the dictionary has loaded
     func getReports(completion: @escaping ()->()) {
         networkInterface.getReports { [weak self] reports in
-            
-            var dictionary = [ReportType : [Report]]()
-            
-            guard let technicalAnalysis = reports.technicalAnalysis,
-                  let topNews = reports.topNews,
-                  let specialReports = reports.specialReport,
-                  let dailyBriefings = reports.dailyBriefings,
-                  let europeanReports = dailyBriefings.eu,
-                  let asianReports = dailyBriefings.asia,
-                  let americanReports = dailyBriefings.us else {
-                return
-            }
-            
-            dictionary[.topNews] = self?.makeNewsReport(reports: topNews)
-            dictionary[.specialReport] = self?.makeNewsReport(reports: specialReports)
-            dictionary[.dailyBriefingsEU] = self?.makeNewsReport(reports: europeanReports)
-            dictionary[.dailyBriefingsAsia] = self?.makeNewsReport(reports: asianReports)
-            dictionary[.dailyBriefingsUS] = self?.makeNewsReport(reports: americanReports)
-            dictionary[.technicalAnalysis] = self?.makeNewsReport(reports: technicalAnalysis)
-            
-            self?.reportDictionary = dictionary
+            self?.formatReports(reports: reports)
             completion()
         }
+    }
+    
+    /// Format the network reponse into a dictionary of reports and their types
+    /// - Parameter reports: netwrok report type
+    func formatReports(reports: ReportModel) {
+        var dictionary = [ReportType : [Report]]()
+        
+        guard let technicalAnalysis = reports.technicalAnalysis,
+              let topNews = reports.topNews,
+              let specialReports = reports.specialReport,
+              let dailyBriefings = reports.dailyBriefings,
+              let europeanReports = dailyBriefings.eu,
+              let asianReports = dailyBriefings.asia,
+              let americanReports = dailyBriefings.us else {
+            return
+        }
+        
+        dictionary[.topNews] = makeNewsReport(reports: topNews)
+        dictionary[.specialReport] = makeNewsReport(reports: specialReports)
+        dictionary[.dailyBriefingsEU] = makeNewsReport(reports: europeanReports)
+        dictionary[.dailyBriefingsAsia] = makeNewsReport(reports: asianReports)
+        dictionary[.dailyBriefingsUS] = makeNewsReport(reports: americanReports)
+        dictionary[.technicalAnalysis] = makeNewsReport(reports: technicalAnalysis)
+        
+        reportDictionary = dictionary
     }
     
     /// Converts int into timestamp
