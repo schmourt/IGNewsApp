@@ -95,7 +95,7 @@ class IGAppTests: XCTestCase {
     }
     
     func testReportDetailViewController() {
-        let mockReport = Report(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", authors: "Arthur Author", authorImageURL: "https://www.website.com/image.jpeg", timestamp: "4:00 PM 25 December 2022", updatedTimestamp: "5:00 PM 25 December 2022", reportImageURL: "https://www.website.com/image.jpeg", url: "https://www.website.com")
+        let mockReport = ReportCellViewModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", authors: "Arthur Author", authorImageURL: "https://www.website.com/image.jpeg", timestamp: "4:00 PM 25 December 2022", updatedTimestamp: "5:00 PM 25 December 2022", reportImageURL: "https://www.website.com/image.jpeg", url: "https://www.website.com")
         
         let reportViewController = ReportDetailViewController(report: mockReport)
         
@@ -129,6 +129,39 @@ class IGAppTests: XCTestCase {
         XCTAssertEqual(viewModel.marketDictionary[.indices]?[4].displayName,
                        "Germany 30")
         XCTAssertEqual(viewModel.marketDictionary[.currencies]?[3].rateDetailURL, "https://www.dailyfx.com/aud-usd")
+
+        XCTAssertEqual(viewModel.getURLString(for: IndexPath(row: 2, section: 0)), "https://www.dailyfx.com/usd-jpy")
+        XCTAssertEqual(viewModel.getURLString(for: IndexPath(row: 4, section: 1)), "https://www.dailyfx.com/copper-prices")
+        XCTAssertEqual(viewModel.getURLString(for: IndexPath(row: 1, section: 2)), "https://www.dailyfx.com/sp-500")
+        XCTAssertEqual(viewModel.getURLString(for: IndexPath(row: 99, section: 99)), "")
+
+        XCTAssertEqual(viewModel.getNumberOfSections(), 3)
+
+        XCTAssertEqual(viewModel.getNumberOfRowsInSection(section: 0), 42)
+        XCTAssertEqual(viewModel.getNumberOfRowsInSection(section: 1), 6)
+        XCTAssertEqual(viewModel.getNumberOfRowsInSection(section: 2), 13)
+        XCTAssertEqual(viewModel.getNumberOfRowsInSection(section: 3), 0)
+
+        let text = viewModel.getCellText(for: IndexPath(row: 2, section: 0))
+        XCTAssertEqual(text.displayName, "USD/JPY")
+        XCTAssertEqual(text.marketID, "USDJPY")
+
+        let text2 = viewModel.getCellText(for: IndexPath(row: 3, section: 1))
+        XCTAssertEqual(text2.displayName, "Oil - Brent Crude")
+        XCTAssertEqual(text2.marketID, "LCO")
+
+        let text3 = viewModel.getCellText(for: IndexPath(row: 5, section: 2))
+        XCTAssertEqual(text3.displayName, "FTSE 100")
+        XCTAssertEqual(text3.marketID, "FT100")
+
+        let text4 = viewModel.getCellText(for: IndexPath(row: 9, section: 9))
+        XCTAssertEqual(text4.displayName, "N/A")
+        XCTAssertEqual(text4.marketID, "N/A")
+
+        XCTAssertEqual(viewModel.getTitleForSection(section: 0), "CURRENCIES")
+        XCTAssertEqual(viewModel.getTitleForSection(section: 1), "COMMODITIES")
+        XCTAssertEqual(viewModel.getTitleForSection(section: 2), "INDICES")
+
     }
     
     func testMarketsTableViewController() {

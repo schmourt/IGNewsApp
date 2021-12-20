@@ -26,6 +26,8 @@
 		F1E4C695276C0D07001A8ECC /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4C694276C0D07001A8ECC /* DashboardViewModel.swift */; };
 		F1E4C69A276C34AA001A8ECC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4C699276C34AA001A8ECC /* TabBarController.swift */; };
 		F1E4C69F276C3A89001A8ECC /* MarketsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4C69E276C3A89001A8ECC /* MarketsTableViewController.swift */; };
+		F1E83D672771459F00AE650F /* ReportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E83D662771459F00AE650F /* ReportDetailView.swift */; };
+		F1E83D6D2771476700AE650F /* ReportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E83D6C2771476700AE650F /* ReportCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		F1E4C694276C0D07001A8ECC /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		F1E4C699276C34AA001A8ECC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F1E4C69E276C3A89001A8ECC /* MarketsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsTableViewController.swift; sourceTree = "<group>"; };
+		F1E83D662771459F00AE650F /* ReportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailView.swift; sourceTree = "<group>"; };
+		F1E83D6C2771476700AE650F /* ReportCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 				F1E4C694276C0D07001A8ECC /* DashboardViewModel.swift */,
 				F16EDA5E276D434F0033F868 /* ReportDetailViewController.swift */,
 				F1E4C68A276C07FF001A8ECC /* ReportModel.swift */,
+				F1E83D662771459F00AE650F /* ReportDetailView.swift */,
+				F1E83D6C2771476700AE650F /* ReportCellViewModel.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -314,12 +320,14 @@
 				F1E4C658276C070B001A8ECC /* AppDelegate.swift in Sources */,
 				F16EDA6A276D71FD0033F868 /* WebViewController.swift in Sources */,
 				F16EDA6F276E941C0033F868 /* MarketsViewModel.swift in Sources */,
+				F1E83D672771459F00AE650F /* ReportDetailView.swift in Sources */,
 				F16EDA74276E94E80033F868 /* MarketModel.swift in Sources */,
 				F1E4C690276C0B6B001A8ECC /* NetwrokInterface.swift in Sources */,
 				F1E4C69F276C3A89001A8ECC /* MarketsTableViewController.swift in Sources */,
 				F1E4C69A276C34AA001A8ECC /* TabBarController.swift in Sources */,
 				F16EDA5F276D434F0033F868 /* ReportDetailViewController.swift in Sources */,
 				F1E4C695276C0D07001A8ECC /* DashboardViewModel.swift in Sources */,
+				F1E83D6D2771476700AE650F /* ReportCellViewModel.swift in Sources */,
 				F1E4C65A276C070B001A8ECC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

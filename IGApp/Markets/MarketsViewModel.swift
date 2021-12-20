@@ -38,4 +38,45 @@ class MarketsViewModel {
         
         self.marketDictionary = dictionary
     }
+
+    func getURLString(for indexPath: IndexPath) -> String {
+        guard let commodityType = CommodityType(rawValue: indexPath.section),
+              let commodities = marketDictionary[commodityType],
+              let urlString =  commodities[indexPath.row].rateDetailURL else {
+            return ""
+        }
+
+        return urlString
+    }
+
+    func getNumberOfRowsInSection(section: Int) -> Int {
+        guard let commodityType = CommodityType(rawValue: section), let commodities = marketDictionary[commodityType] else {
+            return 0
+        }
+
+        return commodities.count
+    }
+
+    func getTitleForSection(section: Int) -> String {
+        guard let commodityType = CommodityType(rawValue: section) else {
+            return ""
+        }
+
+        return commodityType.name.uppercased()
+    }
+
+    func getCellText(for indexPath: IndexPath) -> (displayName: String, marketID: String) {
+        guard let commodityType = CommodityType(rawValue: indexPath.section),
+              let commodities = marketDictionary[commodityType],
+              let displayName = commodities[indexPath.row].displayName,
+              let marketID = commodities[indexPath.row].marketID else {
+            return ("N/A", "N/A")
+        }
+
+        return (displayName, marketID)
+    }
+
+    func getNumberOfSections() -> Int {
+        return marketDictionary.keys.count
+    }
 }

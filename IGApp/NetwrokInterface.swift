@@ -17,7 +17,8 @@ class NetworkInterface {
     func getImage(url: URL, completion: @escaping (UIImage)->()) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
-                fatalError("Error decoding image data \(error!)")
+                completion(UIImage(systemName: "camera.circle") ?? UIImage())
+                return
             }
             
             completion(image)

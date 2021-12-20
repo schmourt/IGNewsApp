@@ -5,7 +5,7 @@
 //  Created by Courtney Langmeyer on 12/16/21.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - ReportModel
 struct ReportModel: Codable {
@@ -21,7 +21,7 @@ struct DailyBriefings: Codable {
 
 // MARK: - NetworkReport
 struct NetworkReport: Codable {
-    let title: String? 
+    let title: String?
     let url: String?
     let specialReportDescription: String?
     let headlineImageURL: String?
@@ -75,16 +75,4 @@ enum ReportType: Int, Hashable {
             return "Technical Analysis"
         }
     }
-}
-
-// MARK: - Report to easily handle in UI
-struct Report {
-    let title: String
-    let description: String
-    let authors: String
-    let authorImageURL: String
-    let timestamp: String
-    let updatedTimestamp: String
-    let reportImageURL: String
-    let url: String
 }

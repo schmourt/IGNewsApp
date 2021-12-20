@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  DashboardViewModel.swift
 //  IGApp
 //
 //  Created by Courtney Langmeyer on 12/16/21.
@@ -17,22 +17,8 @@ class DashboardViewModel {
         return formatter
     }()
     
-    var reportDictionary = [ReportType : [Report]]()
-    
-    /// Get an image from network layer to use in UI
-    /// - Parameters:
-    ///   - urlString: url used for image
-    ///   - completion: pass the image
-    func getImageForURL(urlString: String, completion: @escaping (UIImage)->()) {
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        
-        networkInterface.getImage(url: url) { image in
-            completion(image)
-        }
-    }
-    
+    var reportDictionary = [ReportType : [ReportCellViewModel]]()
+
     /// Get the reports  from the API layer and populate the dictionary for the tableview
     /// - Parameter completion: notifies the tableview that the dictionary has loaded
     func getReports(completion: @escaping ()->()) {
@@ -45,7 +31,7 @@ class DashboardViewModel {
     /// Format the network reponse into a dictionary of reports and their types
     /// - Parameter reports: netwrok report type
     func formatReports(reports: ReportModel) {
-        var dictionary = [ReportType : [Report]]()
+        var dictionary = [ReportType : [ReportCellViewModel]]()
         
         guard let technicalAnalysis = reports.technicalAnalysis,
               let topNews = reports.topNews,
@@ -57,31 +43,21 @@ class DashboardViewModel {
             return
         }
         
-        dictionary[.topNews] = makeNewsReport(reports: topNews)
-        dictionary[.specialReport] = makeNewsReport(reports: specialReports)
-        dictionary[.dailyBriefingsEU] = makeNewsReport(reports: europeanReports)
-        dictionary[.dailyBriefingsAsia] = makeNewsReport(reports: asianReports)
-        dictionary[.dailyBriefingsUS] = makeNewsReport(reports: americanReports)
-        dictionary[.technicalAnalysis] = makeNewsReport(reports: technicalAnalysis)
+        dictionary[.topNews] = makeReportViewModels(reports: topNews)
+        dictionary[.specialReport] = makeReportViewModels(reports: specialReports)
+        dictionary[.dailyBriefingsEU] = makeReportViewModels(reports: europeanReports)
+        dictionary[.dailyBriefingsAsia] = makeReportViewModels(reports: asianReports)
+        dictionary[.dailyBriefingsUS] = makeReportViewModels(reports: americanReports)
+        dictionary[.technicalAnalysis] = makeReportViewModels(reports: technicalAnalysis)
         
         reportDictionary = dictionary
-    }
-    
-    /// Converts int into timestamp
-    /// - Parameter dateInt: 13-digit integer value such as 1639874482891
-    /// - Returns: String format such as "10:00 AM, 23 February 2022"
-    private func convertDate(dateInt: Int) -> String {
-        let truncatedTime = Int(dateInt / 1000)
-        let date = Date(timeIntervalSince1970: TimeInterval(truncatedTime))
-        
-        return formatter.string(from: date)
     }
     
     /// Converts the network struct report type into a report type used for UI
     /// - Parameter reports: network report to be converted
     /// - Returns: array of reports ready for UI
-    private func makeNewsReport(reports: [NetworkReport]) -> [Report] {
-        var newsReports = [Report]()
+    private func makeReportViewModels(reports: [NetworkReport]) -> [ReportCellViewModel] {
+        var newsReports = [ReportCellViewModel]()
         
         for report in reports {
             let title = report.title ?? "Title Unavailable"
@@ -93,10 +69,50 @@ class DashboardViewModel {
             let imageURL = report.headlineImageURL ?? "N/A"
             let url = report.url ?? "N/A"
                 
+            
             let authorNames = authors.map {$0.name ?? ""}.joined(separator: ", ")
             
-            newsReports.append(Report(title: title, description: description, authors: authorNames, authorImageURL: authorImageURL, timestamp: convertDate(dateInt: timestamp), updatedTimestamp: convertDate(dateInt: updatedTimestamp), reportImageURL: imageURL, url: url))
+            newsReports.append(ReportCellViewModel(title: title, description: description, authors: authorNames, authorImageURL: authorImageURL, timestamp: convertDate(dateInt: timestamp), updatedTimestamp: convertDate(dateInt: updatedTimestamp), reportImageURL: imageURL, url: url))
         }
         return newsReports
+    }
+
+    /// Converts int into timestamp
+    /// - Parameter dateInt: 13-digit integer value such as 1639874482891
+    /// - Returns: String format such as "10:00 AM, 23 February 2022"
+    private func convertDate(dateInt: Int) -> String {
+        let truncatedTime = Int(dateInt / 1000)
+        let date = Date(timeIntervalSince1970: TimeInterval(truncatedTime))
+
+        return formatter.string(from: date)
+    }
+
+    func getNumberOfRowsInSection(section: Int) -> Int {
+        guard let reportType = ReportType(rawValue: section), let reports = reportDictionary[reportType] else {
+            return 0
+        }
+
+        return reports.count
+    }
+
+    func getTitleForSection(section: Int) -> String {
+        guard let reportType = ReportType(rawValue: section) else {
+            return ""
+        }
+
+        return reportType.name.uppercased()
+    }
+
+    func getReport(for indexPath: IndexPath) -> ReportCellViewModel? {
+        guard let reportType = ReportType(rawValue: indexPath.section),
+              let reports = reportDictionary[reportType] else {
+                  return nil
+              }
+
+        return reports[indexPath.row]
+    }
+
+    func getNumberOfSections() -> Int {
+        return reportDictionary.keys.count
     }
 }
