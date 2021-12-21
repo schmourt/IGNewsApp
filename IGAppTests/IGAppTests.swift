@@ -69,6 +69,11 @@ class IGAppTests: XCTestCase {
                        "12:00 AM, 18 December 2021")
         XCTAssertEqual(viewModel.reportDictionary[.dailyBriefingsEU]?[0].description,
                        "The Euro remains plagued the by the pandemic, as slowed growth and high inflation leave the ECB in a bind.")
+
+
+        XCTAssertEqual(viewModel.getTitleForSection(section: 0), "TOP NEWS")
+        XCTAssertEqual(viewModel.getTitleForSection(section: 1), "SPECIAL REPORT")
+        XCTAssertEqual(viewModel.getTitleForSection(section: 3), "ASIA")
     }
     
     func testDashboardViewController() {
@@ -95,18 +100,19 @@ class IGAppTests: XCTestCase {
     }
     
     func testReportDetailViewController() {
-//        let mockReport = ReportCellViewModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", authors: "Arthur Author", authorImageURL: "https://www.website.com/image.jpeg", timestamp: "4:00 PM 25 December 2022", updatedTimestamp: "5:00 PM 25 December 2022", reportImageURL: "https://www.website.com/image.jpeg", url: "https://www.website.com")
-//        
-//        let reportViewController = ReportDetailViewController(viewModel: mockReport)
-//        
-//        reportViewController.loadView()
-//        
-//        XCTAssertEqual(reportViewController.titleLabel.text!, "Title")
-//        XCTAssertEqual(reportViewController.descriptionLabel.text!,
-//                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
-//        XCTAssertEqual(reportViewController.authorLabel.text!, "Written by: Arthur Author")
-//        XCTAssertEqual(reportViewController.timestampLabel.text!, "Last updated: 5:00 PM 25 December 2022")
-//        XCTAssertEqual(reportViewController.viewOnWebButton.titleLabel?.text!, "Tap to view on web")
+        let mockReport = ReportCellViewModel(title: "Title", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", authors: "Arthur Author", authorImageURL: "https://www.website.com/image.jpeg", timestamp: "4:00 PM 25 December 2022", updatedTimestamp: "5:00 PM 25 December 2022", reportImageURL: "https://www.website.com/image.jpeg", url: "https://www.website.com")
+        
+        let reportViewController = ReportDetailViewController(viewModel: mockReport)
+        
+        reportViewController.loadView()
+        let view = reportViewController.reportDetailView
+        
+        XCTAssertEqual(view.titleLabel.text!, "Title")
+        XCTAssertEqual(view.descriptionLabel.text!,
+                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+        XCTAssertEqual(view.authorLabel.text!, "Written by: Arthur Author")
+        XCTAssertEqual(view.timestampLabel.text!, "Last updated: 5:00 PM 25 December 2022")
+        XCTAssertEqual(view.viewOnWebButton.titleLabel?.text!, "Tap to view on web")
     }
     
     func testMarketsViewModel() {
@@ -161,7 +167,6 @@ class IGAppTests: XCTestCase {
         XCTAssertEqual(viewModel.getTitleForSection(section: 0), "CURRENCIES")
         XCTAssertEqual(viewModel.getTitleForSection(section: 1), "COMMODITIES")
         XCTAssertEqual(viewModel.getTitleForSection(section: 2), "INDICES")
-
     }
     
     func testMarketsTableViewController() {

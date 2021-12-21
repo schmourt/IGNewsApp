@@ -8,9 +8,9 @@
 import UIKit
 
 class DashboardViewModel {
-    let networkInterface = NetworkInterface()
+    private let networkInterface = NetworkInterface()
     
-    let formatter: DateFormatter = {
+    private let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "UTC")
         formatter.dateFormat = "h:mm a, dd MMMM YYYY"
@@ -87,6 +87,9 @@ class DashboardViewModel {
         return formatter.string(from: date)
     }
 
+    /// Get the number of rows for thetableview section
+    /// - Parameter section: indexpath section
+    /// - Returns: number of items in the commodity type array in the dictionary
     func getNumberOfRowsInSection(section: Int) -> Int {
         guard let reportType = ReportType(rawValue: section), let reports = reportDictionary[reportType] else {
             return 0
@@ -95,6 +98,9 @@ class DashboardViewModel {
         return reports.count
     }
 
+    /// The title for the tableview section
+    /// - Parameter section: indexpath section
+    /// - Returns: title for the section, by looking up type name
     func getTitleForSection(section: Int) -> String {
         guard let reportType = ReportType(rawValue: section) else {
             return ""
@@ -102,7 +108,10 @@ class DashboardViewModel {
 
         return reportType.name.uppercased()
     }
-
+    
+    /// Get the report object fort the specified indexpath
+    /// - Parameter indexPath: the indexpath for the dictionary lookup
+    /// - Returns: report object
     func getReport(for indexPath: IndexPath) -> ReportCellViewModel? {
         guard let reportType = ReportType(rawValue: indexPath.section),
               let reports = reportDictionary[reportType] else {
@@ -111,7 +120,9 @@ class DashboardViewModel {
 
         return reports[indexPath.row]
     }
-
+    
+    /// Get the number of sections in the tableview
+    /// - Returns: the number of sections in the tableview
     func getNumberOfSections() -> Int {
         return reportDictionary.keys.count
     }

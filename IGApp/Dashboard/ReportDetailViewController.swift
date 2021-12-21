@@ -30,6 +30,7 @@ class ReportDetailViewController: UIViewController {
 
         view = reportDetailView
 
+        /// Navigate to the webview when the button is tapped
         reportDetailView.onButtonTapped = { [weak self] string in
             self?.navigationController?.pushViewController(WebViewController(url: string), animated: false)
         }
